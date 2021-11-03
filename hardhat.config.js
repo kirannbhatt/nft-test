@@ -1,4 +1,5 @@
 require("@nomiclabs/hardhat-waffle");
+require("@nomiclabs/hardhat-ethers");
 
 // This is a sample Hardhat task. To learn how to create your own go to
 // https://hardhat.org/guides/create-task.html
@@ -31,5 +32,13 @@ module.exports = {
     //     "80182edab35ac7fac68757a468fdbb8e88fc4aa6fb1c30bb932db60b31ac0ae0",
     //   ],
     // },
+  },
+  etherscan: {
+    apiKey: "1NJ277C2K86RYDIG5IVGTWQ8T6FFF1UFJM",
+  },
+  namedAccounts: {
+    deployer: {
+      default: 0,
+    },
   },
 };

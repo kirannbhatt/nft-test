@@ -1,22 +1,22 @@
 const { ethers } = require("hardhat");
-const hre = require("hardhat");
 
-async function main() {
-  const [deployer] = await ethers.getSigners();
+module.exports = async ({
+  getNamedAccounts,
+  deployments,
+  getChainId
+}) => {
+  const { deploy, log} = deployments;
+  const { deployer } = await getNamedAccounts()
+  const chainId = await getChainId()
 
-  console.log("Deploying contract with the account:", deployer.address);
+  log("-----deploy script------")
+  const ZegalNFT = await deploy("zegalNFT", {
+    from: deployer,
+    log: true
+  })
 
-  const LegalNFT = await hre.ethers.getContractFactory("legalNFT");
-  const legalNFT = await LegalNFT.deploy();
+  log(`-- NFT contract deployed to ${ZegalNFT.address}`)
+  let legalDocURI = "https://zegal.com/kiran-testing"
 
-  await legalNFT.deployed();
-
-  console.log("LegalNFT deployed to:", legalNFT.address);
+  const zegalNFTContract = await ethers.getContractFactory("zegalNFT")
 }
-
-main()
-  .then(() => process.exit(0))
-  .catch((error) => {
-    console.error(error);
-    process.exit(1);
-  });
