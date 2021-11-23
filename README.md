@@ -9,6 +9,9 @@ Try running some of the following tasks:
 
 ```shell
 yarn compile
-yarn hardhat deploy --network rinkeby - this will deploy contract to rinkeby network
+npx hardhat run scripts/deploy.js --network rinkeby - this will deploy contract to rinkeby network
 npx hardhat verify --network rinkeby 0x8561b47C369D01EfbC387Fc2943D62d1761313e2 - verify token 
+
+npm run dev - start the server
+localhost:8000/mint - {uri: "link to pinata ipfs metadata"} - mint nft
 ```
